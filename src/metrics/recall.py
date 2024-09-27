@@ -24,16 +24,18 @@ def calculate_recall(ground_truth_lists, float_lists):
 
     return recall_values
 
-ground_truth_lists = [
-    ["Paris is the capital of France", "The Eiffel Tower is in Paris"],
-    ["William Shakespeare wrote Hamlet", "Hamlet is a tragedy", "Shakespeare was known for his plays"]
-]
 
-float_lists = [
-    [0.9, 0.8],  # Для первого блока
-    [0.7, 0.6, 0.5]  # Для второго блока
-]
+if __name__ == '__main__':
+    ground_truth_lists = [
+        ["Paris is the capital of France", "The Eiffel Tower is in Paris"],
+        ["William Shakespeare wrote Hamlet", "Hamlet is a tragedy", "Shakespeare was known for his plays"]
+    ]
 
-result = calculate_recall(ground_truth_lists, float_lists)
+    float_lists = [
+        [0.9, 0.8],  # Для первого блока
+        [0.7, 0.6, 0.5]  # Для второго блока
+    ]
 
-print(result)
+    result = calculate_recall(ground_truth_lists, float_lists)
+
+    print(result)
