@@ -10,7 +10,7 @@ OLLAMA_ENDPOINT = "http://89.169.135.235:11434/api/generate"
 
 DEVICE = 'cuda'
 CHROMA_DB_PATH = '../data/chroma_db'
-DATA_FOR_DB_PARQUET = '../data/actual/interim/data_for_db_corrected.parquet'
+DATA_FOR_DB_PARQUET = 'data/actual/interim/data_for_db_corrected.parquet'
 # EVALUATION_PARQUET = '../data/actual/interim/evaluation_df.parquet'
 # SMALL_EVALUATION_PARQUET = '../data/actual/interim/evaluation_df_125.parquet'
 
