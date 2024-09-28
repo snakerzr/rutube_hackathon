@@ -119,6 +119,7 @@ correctness_metric = GEval(
     model=OPENAI_MODEL,
     name="Correctness",
     criteria="Determine whether the actual output is factually correct based on the expected output.",
+    strict_mode=True,
     # NOTE: you can only provide either criteria or evaluation_steps, and not both
     evaluation_steps=[
         "Check whether the facts in 'actual output' contradicts any facts in 'expected output'",

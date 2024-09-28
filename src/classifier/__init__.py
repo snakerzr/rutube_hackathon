@@ -1,0 +1,1 @@
+from .classifier import onnx_clf_one, onnx_clf_two, id2label_one, id2label_two

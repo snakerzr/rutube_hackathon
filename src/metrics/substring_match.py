@@ -23,7 +23,6 @@ def substring_match(g, r):
     # Проверка: если ground_truth содержит меньше 3 слов, возвращаем 0
     if len(g_words) <= 3:
         raise ValueError("Кол-во слов в ground truth должно быть больше 3х.")
-        return 0
 
     if g_clean in r_clean:
         return 1.0  # Полное совпадение

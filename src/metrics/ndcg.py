@@ -1,7 +1,7 @@
 import math
 
 
-def calculate_dcg(fractions):
+def calculate_dcg(fractions) -> float:
     """
     Вычисляет Discounted Cumulative Gain (DCG) для списка значений fraction.
     """
@@ -11,7 +11,7 @@ def calculate_dcg(fractions):
     return dcg
 
 
-def calculate_ndcg(retrieved_fractions):
+def calculate_ndcg(retrieved_fractions: list[list[float]]) -> float:
     """
     Вычисляет NDCG для каждого списка retrieved_fractions.
 
