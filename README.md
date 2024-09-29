@@ -47,3 +47,9 @@ python ./bot/helper_bot.py
 * Hallucinations detection
 * Answer relevancy
 * Documents relevancy
+
+## Модели
+
+* e5_large_finetuned - [ссылка](https://drive.google.com/file/d/1aLjDaNO8LifO_p_22J_UWzGvDh3Ju8pd/view) дообученная модель-эмбеддер для поиска. В архиве есть readme.md, с кодом обучения.
+* clf_one_opt - [ссылка](https://disk.yandex.ru/d/KRz3FTQQfvA_gw) модель классификатор 1 тематики
+* clf_two_opt - [ссылка](https://disk.yandex.ru/d/wwwiydPi2rkG4g) модель классификатор 2 тематики
