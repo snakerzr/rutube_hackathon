@@ -15,42 +15,48 @@ collection = get_collection()
 
 app = FastAPI()
 
+
 @app.get("/")
 def index():
+    """Welcome string"""
     return {"text": "Интеллектуальный помощник оператора службы поддержки."}
 
 
 @app.post("/predict")
-async def get_reponse(request: Request) -> Response:
-    answer = rag_pipeline(request.question)['actual_response']
-    if re.findall('не знаю|не могу|нет ответа', answer.lower()):
-        class_1 = 'None'
-        class_2 = 'None'
+async def get_response(request: Request) -> Response:
+    """API for text analysis.
+    Input: message text:
+    Output: json with LLM answer and two classes"""
+    answer = rag_pipeline(request.question)["actual_response"]
+    if re.findall("не знаю|не могу|нет ответа", answer.lower()):
+        class_1 = "None"
+        class_2 = "None"
     else:
         result_one = onnx_clf_one(request.question)
-        class_1 = id2label_one[result_one[0]['label'].split('_')[1]]
+        class_1 = id2label_one[result_one[0]["label"].split("_")[1]]
         result_two = onnx_clf_two(request.question)
-        class_2 = id2label_two[result_two[0]['label'].split('_')[1]]
+        class_2 = id2label_two[result_two[0]["label"].split("_")[1]]
 
-    response = Response(
-        answer=answer,
-        class_1=class_1,
-        class_2=class_2
-    )
+    response = Response(answer=answer, class_1=class_1, class_2=class_2)
     return response
 
 
 @app.post("/classify")
 async def predict_class(request: Request) -> ResponseClassify:
+    """Internal function
+    Input: message text:
+    Output: json with and two classes"""
     result_one = onnx_clf_one(request.question)
-    class_1=id2label_one[result_one[0]['label'].split('_')[1]]
+    class_1 = id2label_one[result_one[0]["label"].split("_")[1]]
     result_two = onnx_clf_two(request.question)
-    class_2=id2label_two[result_two[0]['label'].split('_')[1]]
+    class_2 = id2label_two[result_two[0]["label"].split("_")[1]]
 
-    return {'class_1': class_1,
-     'answer_1': result_one[0],
-     'class_2': class_2,
-     'answer_2': result_two[0]}
+    return {
+        "class_1": class_1,
+        "answer_1": result_one[0],
+        "class_2": class_2,
+        "answer_2": result_two[0],
+    }
 
 
 if __name__ == "__main__":
